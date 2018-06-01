@@ -1,7 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace app\controllers;
 
+use app\services\BattleService;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -46,6 +48,8 @@ class BattleController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+
+        $report = BattleService::engage(20, 20);
+        return $this->render('index', compact('report'));
     }
 }
