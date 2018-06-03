@@ -17,7 +17,11 @@ class BattleController extends Controller
      */
     public function actionIndex()
     {
-        $report = BattleService::engage(20,20);
+        $army1 = intval(Yii::$app->request->getQueryParam('army1'));
+        $army2 = intval(Yii::$app->request->getQueryParam('army2'));
+
+        $report = BattleService::engage($army1, $army2);
+
         return $this->render('index', compact('report'));
     }
 }
