@@ -44,29 +44,15 @@ class Reports
     public function generateSlots($army)
     {
 
-        $slots = [
-            'Army Strength' => $army->getArmyStrength(),
-            Units::UNIT_TYPE_INFANTRY => 0,
-            Units::UNIT_TYPE_ARCHER => 0,
-            Units::UNIT_TYPE_CAVALRY => 0
-        ];
+        $slots = [];
+        $slots['Army Strength'] = $army->getArmyStrength();
 
+        foreach (Units::getUnitsTypes() as $unitType) {
+            $slots[$unitType] = 0;
+        }
 
         foreach ($army->getArmy() as $unit) {
-            if ($unit->getType() == Units::UNIT_TYPE_INFANTRY) {
-                $slots[Units::UNIT_TYPE_INFANTRY] += 1;
-                continue;
-            }
-
-            if ($unit->getType() == Units::UNIT_TYPE_ARCHER) {
-                $slots[Units::UNIT_TYPE_ARCHER] += 1;
-                continue;
-            }
-
-            if ($unit->getType() == Units::UNIT_TYPE_CAVALRY) {
-                $slots[Units::UNIT_TYPE_CAVALRY] += 1;
-            }
-
+            $slots[$unit->getType()] += 1;
         }
 
         return $slots;
