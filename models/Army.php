@@ -58,6 +58,28 @@ class Army
         $this->army = $army;
     }
 
+    public function getArmyBonuses(){
 
+        $bonuses = [
+            'General bonus' => 0,
+            'Terrain bonus' => 0
+        ];
+
+        foreach ($this->getArmy() as $unit) {
+
+            $bonusStrength = $unit->getBonusStrength();
+
+            if (isset($bonusStrength['General'])) {
+                $bonuses['General bonus'] +=  $bonusStrength['General'];
+            }
+
+            if (isset($bonusStrength['Terrain'])) {
+                $bonuses['Terrain bonus'] +=  $bonusStrength['Terrain'];
+            }
+        }
+
+        return $bonuses;
+
+    }
 
 }
