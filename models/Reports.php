@@ -22,12 +22,12 @@ class Reports
 
     public function firstArmySlots()
     {
-        return $this->generateSlots($this->getFirstArmy());
+        return $this->generateSlots($this->getFirstArmy(), true);
     }
 
     public function secondArmySlots()
     {
-        return $this->generateSlots($this->getSecondArmy());
+        return $this->generateSlots($this->getSecondArmy(), true);
     }
 
     public function firstArmyAfterBattleSlots()
@@ -41,7 +41,7 @@ class Reports
     }
 
 
-    public function generateSlots($army)
+    public function generateSlots($army, $bonusSlotsVisible = false)
     {
 
         $slots = [];
@@ -53,6 +53,12 @@ class Reports
 
         foreach ($army->getArmy() as $unit) {
             $slots[$unit->getType()] += 1;
+        }
+
+        if ($bonusSlotsVisible) {
+            foreach ($army->getArmyBonuses() as $key => $value) {
+                $slots[$key] = $value;
+            }
         }
 
         return $slots;
