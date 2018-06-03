@@ -9,6 +9,7 @@
 namespace app\models;
 
 use app\models\units\Units;
+use yii\web\ServerErrorHttpException;
 
 class Reports
 {
@@ -16,6 +17,11 @@ class Reports
 
     public function informationFrom($battle)
     {
+
+        if (!($battle instanceof Battle)) {
+            throw new ServerErrorHttpException('Object must  be instance of app\models\Battle!');
+        }
+
         $this->battle = $battle;
         return $this;
     }
