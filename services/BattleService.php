@@ -18,8 +18,11 @@ class BattleService
     public static function engage(int $firstArmyCount, int $secondArmyCount)
     {
 
-        $firstArmy = new Army($firstArmyCount);
-        $secondArmy = new Army($secondArmyCount);
+        $firstArmy = new Army();
+        $firstArmy->generateFromUnitsNumber($firstArmyCount);
+
+        $secondArmy = new Army();
+        $secondArmy->generateFromUnitsNumber($secondArmyCount);
 
         $battle = new Battle($firstArmy, $secondArmy);
         $battle->commit();
