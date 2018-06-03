@@ -7,10 +7,7 @@ use app\services\BattleService;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
 class BattleController extends Controller
 {
@@ -49,7 +46,7 @@ class BattleController extends Controller
     public function actionIndex()
     {
 
-        $report = BattleService::engage(20, 20);
+        $report = BattleService::engage(20,20);
         return $this->render('index', compact('report'));
     }
 }
