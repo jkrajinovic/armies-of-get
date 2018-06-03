@@ -34,5 +34,21 @@ class Army
         });
     }
 
+    public function getArmyEnergy()
+    {
+        return array_reduce($this->army,function ($strength,$unit) {
+            $strength += $unit->getEnergy();
+            return $strength;
+        });
+    }
+
+    public function getArmy(): array{
+        return $this->army;
+    }
+
+    public function addArmy(array $army){
+        $this->army = $army;
+    }
+
 
 }
