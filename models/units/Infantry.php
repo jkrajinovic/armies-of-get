@@ -12,46 +12,22 @@ namespace app\models\units;
  * Class Infantry
  * @package app\models\units
  */
-final class Infantry
+final class Infantry  extends Units
 {
 
     /**
      * @var
      */
-    private $type = Units::UNIT_TYPE_INFANTRY;
+    protected $type = Units::UNIT_TYPE_INFANTRY;
 
     /**
      * @var
      */
-    private $strength = 60;
+    protected $strength = 60;
 
     /**
      * @var
      */
-    private $energy = 65;
-
-    /**
-     * @return mixed
-     */
-    public function getEnergy()
-    {
-        return $this->energy;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStrength()
-    {
-        return $this->strength;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
+    protected $energy = 65;
 
 }

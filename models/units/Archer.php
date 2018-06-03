@@ -12,46 +12,22 @@ namespace app\models\units;
  * Class Archer
  * @package app\models\units
  */
-final class Archer
+final class Archer extends Units
 {
 
     /**
      * @var
      */
-    private $type = Units::UNIT_TYPE_ARCHER;
+    protected $type = Units::UNIT_TYPE_ARCHER;
 
     /**
      * @var
      */
-    private $strength = 40;
+    protected $strength = 40;
 
     /**
      * @var
      */
-    private $energy = 30;
-
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStrength()
-    {
-        return $this->strength;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEnergy()
-    {
-        return $this->energy;
-    }
+    protected $energy = 30;
 
 }
