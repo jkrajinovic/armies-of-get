@@ -11,7 +11,8 @@ namespace app\models;
 
 class Conditions
 {
-    private $uphill;
+    private $uphill = false;
+    private $hasGeneral = false;
 
     function __construct(array $conditions)
     {
@@ -22,17 +23,22 @@ class Conditions
 
     public function applyConditions($army)
     {
+        $this->hasGeneral = $army->hasGeneral;
+
+        if ($this->hasGeneral) {
+            foreach ($army->getArmy() as $unit) {
+                $unit->addGeneralBonusStrength(5);
+            }
+        }
 
         if ($this->uphill) {
             foreach ($army->getArmy() as $unit) {
-                $unit->addStrength(5);
+                $unit->addTerrainBonusStrength(5);
             }
-            return $army;
-        }
-
-
-        foreach ($army->getArmy() as $unit) {
-            $unit->subtractStrength(5);
+        } else {
+            foreach ($army->getArmy() as $unit) {
+                $unit->addTerrainBonusStrength(-5);
+            }
         }
 
         return $army;
