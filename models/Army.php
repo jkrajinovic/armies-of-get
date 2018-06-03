@@ -15,23 +15,24 @@ class Army
 
     private $army = [];
 
-    function __construct(int $count)
+
+    public function generateFromUnitsNumber($count)
     {
         $i = 0;
         while ($i < $count) {
             array_push($this->army, (new Units())->createRandomUnit());
             $i++;
         }
-
-        return $this->army;
     }
 
-    public function getArmyStrenth()
+
+    public function getArmyStrength()
     {
-        return array_reduce($this->army,function ($strength,$unit) {
+        return array_reduce($this->army, function ($strength, $unit) {
             $strength += $unit->getStrength();
             return $strength;
         });
     }
+
 
 }
