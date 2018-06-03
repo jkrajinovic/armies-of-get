@@ -22,29 +22,27 @@ class Reports
 
     public function firstArmySlots()
     {
-
-        return $this->generateSlots($this->battle->getFirstArmy());
+        return $this->generateSlots($this->getFirstArmy());
     }
 
     public function secondArmySlots()
     {
-
-        return $this->generateSlots($this->battle->getSecondArmy());
+        return $this->generateSlots($this->getSecondArmy());
     }
 
     public function firstArmyAfterBattleSlots()
     {
-
-        return $this->generateSlots($this->battle->getFirstArmyAfterBattle());
+        return $this->generateSlots($this->getFirstArmyAfterBattle());
     }
 
     public function secondArmyAfterBattleSlots()
     {
-        return $this->generateSlots($this->battle->getSecondArmyAfterBattle());
+        return $this->generateSlots($this->getSecondArmyAfterBattle());
     }
 
 
-    public function generateSlots($army){
+    public function generateSlots($army)
+    {
 
         $slots = [
             'Army Strength' => $army->getArmyStrength(),
@@ -54,23 +52,52 @@ class Reports
         ];
 
 
-
-        foreach ($army->getArmy() as $unit ) {
-            if($unit->getType() == Units::UNIT_TYPE_INFANTRY){
+        foreach ($army->getArmy() as $unit) {
+            if ($unit->getType() == Units::UNIT_TYPE_INFANTRY) {
                 $slots[Units::UNIT_TYPE_INFANTRY] += 1;
+                continue;
             }
 
-            if($unit->getType() == Units::UNIT_TYPE_ARCHER){
+            if ($unit->getType() == Units::UNIT_TYPE_ARCHER) {
                 $slots[Units::UNIT_TYPE_ARCHER] += 1;
+                continue;
             }
 
-            if($unit->getType() == Units::UNIT_TYPE_CAVALRY){
+            if ($unit->getType() == Units::UNIT_TYPE_CAVALRY) {
                 $slots[Units::UNIT_TYPE_CAVALRY] += 1;
             }
 
         }
 
         return $slots;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBattle()
+    {
+        return $this->battle;
+    }
+
+    public function getFirstArmy()
+    {
+        return $this->getBattle()->getFirstArmy();
+    }
+
+    public function getSecondArmy()
+    {
+        return $this->getBattle()->getSecondArmy();
+    }
+
+    public function getFirstArmyAfterBattle()
+    {
+        return $this->getBattle()->getFirstArmyAfterBattle();
+    }
+
+    public function getSecondArmyAfterBattle()
+    {
+        return $this->getBattle()->getSecondArmyAfterBattle();
     }
 
 }
