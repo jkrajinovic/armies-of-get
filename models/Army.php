@@ -9,6 +9,7 @@
 namespace app\models;
 
 use app\models\units\Units;
+use app\models\units\General;
 
 class Army
 {
@@ -23,6 +24,11 @@ class Army
             array_push($this->army, (new Units())->createRandomUnit());
             $i++;
         }
+
+        if (rand(0, 1)) {
+            array_push($this->army, new General());
+        }
+
     }
 
 
