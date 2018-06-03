@@ -92,8 +92,7 @@ class Units
      */
     public function createRandomUnit()
     {
-//        $index = rand(0, 2);
-        $index = 1;
+        $index = rand(0, 2);
 
         switch ($index) {
             case 0:
