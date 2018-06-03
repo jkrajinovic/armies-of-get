@@ -16,6 +16,7 @@ class Army
 
     private $army = [];
 
+    public $hasGeneral = false;
 
     public function generateFromUnitsNumber($count)
     {
@@ -27,6 +28,7 @@ class Army
 
         if (rand(0, 1)) {
             array_push($this->army, new General());
+            $this->hasGeneral = true;
         }
 
     }
@@ -55,6 +57,7 @@ class Army
     public function addArmy(array $army){
         $this->army = $army;
     }
+
 
 
 }
