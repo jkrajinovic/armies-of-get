@@ -67,6 +67,20 @@ class Units
     /**
      * @return mixed
      */
+    public function addStrength($amount)
+    {
+        $this->strength += $amount;
+    }
+
+    public function subtractStrength($amount)
+    {
+        $this->strength -= $amount;
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getType()
     {
         return $this->type;
@@ -78,7 +92,8 @@ class Units
      */
     public function createRandomUnit()
     {
-        $index = rand(0, 2);
+//        $index = rand(0, 2);
+        $index = 1;
 
         switch ($index) {
             case 0:
