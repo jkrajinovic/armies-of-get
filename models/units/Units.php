@@ -44,6 +44,11 @@ class Units
     protected $strength = 0;
 
     /**
+     * @var array
+     */
+    protected $bonusStrength = [];
+
+    /**
      * @var
      */
     protected $energy = 0;
@@ -61,20 +66,40 @@ class Units
      */
     public function getStrength()
     {
-        return $this->strength;
+        return $this->strength + $this->calculateBonusStrength();
+    }
+
+    public function calculateBonusStrength()
+    {
+        $additionalStrength = 0;
+        foreach ($this->bonusStrength as $key => $bonus) {
+            $additionalStrength += $bonus;
+        }
+        return $additionalStrength;
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function addStrength($amount)
+    public function getBonusStrength()
     {
-        $this->strength += $amount;
+        return $this->bonusStrength;
     }
 
-    public function subtractStrength($amount)
+    /**
+     * @param $amount
+     */
+    public function addGeneralBonusStrength($amount)
     {
-        $this->strength -= $amount;
+        $this->bonusStrength['General'] = $amount;
+    }
+
+    /**
+     * @param $amount
+     */
+    public function addTerrainBonusStrength($amount)
+    {
+        $this->bonusStrength['Terrain'] = $amount;
     }
 
 
@@ -108,5 +133,7 @@ class Units
                 throw new NotFoundHttpException('Index in units types array does not exist');
         }
     }
+
+
 
 }
