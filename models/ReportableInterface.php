@@ -12,4 +12,12 @@ namespace app\models;
 interface ReportableInterface
 {
 
+    public function getFirstArmy();
+
+    public function getSecondArmy();
+
+    public function getFirstArmyAfterBattle();
+
+    public function getSecondArmyAfterBattle();
+
 }
