@@ -18,7 +18,7 @@ final class Archer
     /**
      * @var
      */
-    private $type = 'Archer';
+    private $type = Units::UNIT_TYPE_ARCHER;
 
     /**
      * @var

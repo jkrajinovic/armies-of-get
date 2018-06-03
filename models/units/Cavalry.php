@@ -17,7 +17,7 @@ final class Cavalry
     /**
      * @var
      */
-    private $type = 'Cavalry';
+    private $type = Units::UNIT_TYPE_CAVALRY;
 
     /**
      * @var

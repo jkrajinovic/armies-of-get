@@ -18,6 +18,10 @@ use yii\web\NotFoundHttpException;
 class Units
 {
 
+    const UNIT_TYPE_INFANTRY = 'Infantry';
+    const UNIT_TYPE_ARCHER = 'Arher';
+    const UNIT_TYPE_CAVALRY = 'Cavalry';
+
     /**
      * @return Archer|Cavalry|Infantry
      * @throws NotFoundHttpException
